@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//criar uma migration: yarn prisma migrate dev
+model Usuario {
+  id            String    @id @default(uuid())
+  nome          String
+  email         String
+  senha         String
+  telefone      String
+  datacadastro  DateTime? @default(now())
+  dataalteracao DateTime? @default(now())
+  status        String
+
+  @@map("usuarios")
+}
+
+model Fidelidade {
+  id            String    @id @default(uuid())
+  nome          String
+  foto          String
+  datacadastro  DateTime? @default(now())
+  dataalteracao DateTime? @default(now())
+  milha         Milha[]
+
+  @@map("fidelidades")
+}
+
+model Milha {
+  id            String    @id @default(uuid())
+  data          DateTime? @default(now())
+  quantidade    String
+  valorunitario String
+  valortotal    String
+  observacao    String
+  datacadastro  DateTime? @default(now())
+  dataalteracao DateTime? @default(now())
+
+  fidelidade    Fidelidade @relation(fields: [fidelidade_id], references: [id])
+  fidelidade_id String
+
+  @@map("milhas")
+}
+
+/**
+ * model Plano {
+ * id            String        @id @default(uuid())
+ * nome          String
+ * valor         String
+ * datacadastro  DateTime?     @default(now())
+ * dataalteracao DateTime?     @default(now())
+ * receberitem   ReceberItem[]
+ * @@map("planos")
+ * }
+ * model Receber {
+ * id          String        @id @default(uuid())
+ * ativo       Boolean       @default(false)
+ * receberitem ReceberItem[]
+ * @@map("receber")
+ * }
+ * model ReceberItem {
+ * id          String    @id @default(uuid())
+ * datainicio  DateTime? @default(now())
+ * datatermino DateTime? @default(now())
+ * valor       String
+ * receber    Receber @relation(fields: [receber_id], references: [id])
+ * receber_id String
+ * plano    Plano  @relation(fields: [plano_id], references: [id])
+ * plano_id String
+ * @@map("receberitens")
+ * }
+ */
