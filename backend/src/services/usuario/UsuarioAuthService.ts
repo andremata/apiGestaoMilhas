@@ -2,15 +2,15 @@ import prismaClient from "../../prisma";
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
-interface AuthUsuarioRequest{
+interface UsuarioAuthRequest{
     email: string;
     senha: string;
 }
 
-class AuthUsuarioService{
+class UsuarioAuthService{
     async execute({
         email,
-        senha }: AuthUsuarioRequest){
+        senha }: UsuarioAuthRequest){
 
         this.validarDados(email, senha);
 
@@ -65,4 +65,4 @@ class AuthUsuarioService{
     }
 }
 
-export { AuthUsuarioService };
+export { UsuarioAuthService };
