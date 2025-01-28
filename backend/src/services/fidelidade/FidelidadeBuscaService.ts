@@ -7,6 +7,9 @@ class FidelidadeBuscaService{
                 id: true,
                 nome: true,
                 foto: true,
+            },
+            orderBy:{
+                datacadastro: 'desc'
             }
         });
 

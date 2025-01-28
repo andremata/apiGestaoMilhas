@@ -10,6 +10,9 @@ class MilhaBuscaService{
                 valorunitario: true,
                 valortotal: true,
                 observacao: true,
+            },
+            orderBy:{
+                datacadastro: 'desc'
             }
         });
 

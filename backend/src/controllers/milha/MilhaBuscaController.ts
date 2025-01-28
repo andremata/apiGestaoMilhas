@@ -5,7 +5,7 @@ class MilhaBuscaController{
     async handle(req: Request, res: Response){
         const milhaBuscaService = new MilhaBuscaService();
 
-        const milhas = milhaBuscaService.execute();
+        const milhas = await milhaBuscaService.execute();
 
         return res.json(milhas);
     }

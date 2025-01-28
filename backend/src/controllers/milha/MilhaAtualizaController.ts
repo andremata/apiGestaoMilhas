@@ -1,29 +1,31 @@
 import { Request, Response } from 'express';
-import { MilhaCadastroService } from '../../services/milha/MilhaCadastroService';
+import { MilhaAtualizaService } from '../../services/milha/MilhaAtualizaService';
 
-class MilhaCadastroController{
+class MilhaAtualizaController{
     async handle(req: Request, res: Response){
         const {
+            milha_id,
             data,
             quantidade,
             valorunitario,
             valortotal,
             observacao,
             fidelidade_id } = req.body;
+        
+        const milhaAtualizaService = new MilhaAtualizaService();
 
-        const milhaCadastroService = new MilhaCadastroService();
-
-        const milha = await milhaCadastroService.execute({
+        const milha = await milhaAtualizaService.execute({
+            milha_id,
             data,
             quantidade,
             valorunitario,
             valortotal,
             observacao,
-            fidelidade_id
+            fidelidade_id,
         });
 
         return res.json(milha);
     }
 }
 
-export { MilhaCadastroController }
+export { MilhaAtualizaController }

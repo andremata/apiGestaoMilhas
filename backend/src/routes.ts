@@ -9,6 +9,10 @@ import { MilhaCadastroController } from "./controllers/milha/MilhaCadastroContro
 import { MilhaBuscaController } from "./controllers/milha/MilhaBuscaController";
 import { isAutenticado } from './middlewares/isAutenticado';
 import uploadConfig from './config/multer';
+import { MilhaBuscaPorFidelidadeController } from "./controllers/milha/MilhaBuscaPorFidelidadeController";
+import { MilhaDeleteController } from "./controllers/milha/MilhaDeleteController";
+import { MilhaAtualizaController } from "./controllers/milha/MilhaAtualizaController";
+import { MilhaDetalheController } from "./controllers/milha/MilhaDetalheController";
 
 const router = Router();
 
@@ -26,5 +30,9 @@ router.get('/fidelidade', isAutenticado, new FidelidadeBuscaController().handle)
 //Milhas
 router.post('/milha', isAutenticado, new MilhaCadastroController().handle);
 router.get('/milha', isAutenticado, new MilhaBuscaController().handle);
+router.get('/milha/detalhe', isAutenticado, new MilhaDetalheController().handle);
+router.get('/fidelidade/milha', isAutenticado, new MilhaBuscaPorFidelidadeController().handle);
+router.delete('/milha', isAutenticado, new MilhaDeleteController().handle);
+router.put('/milha/atualizar', isAutenticado, new MilhaAtualizaController().handle);
 
 export { router };
