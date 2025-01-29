@@ -13,6 +13,7 @@ import { MilhaBuscaPorFidelidadeController } from "./controllers/milha/MilhaBusc
 import { MilhaDeleteController } from "./controllers/milha/MilhaDeleteController";
 import { MilhaAtualizaController } from "./controllers/milha/MilhaAtualizaController";
 import { MilhaDetalheController } from "./controllers/milha/MilhaDetalheController";
+import { FidelidadeAtualizaController } from "./controllers/fidelidade/FidelidadeAtualizaController";
 
 const router = Router();
 
@@ -26,6 +27,7 @@ router.get('/me', isAutenticado, new UsuarioDetalheController().handle);
 //Fidelidades
 router.post('/fidelidade', isAutenticado, upload.single('file'), new FidelidadeCadastroController().handle);
 router.get('/fidelidade', isAutenticado, new FidelidadeBuscaController().handle);
+router.put('/fidelidade/atualizar', isAutenticado, new FidelidadeAtualizaController().handle);
 
 //Milhas
 router.post('/milha', isAutenticado, new MilhaCadastroController().handle);

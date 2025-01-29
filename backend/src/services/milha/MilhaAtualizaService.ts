@@ -1,12 +1,12 @@
 import prismaClient from "../../prisma";
 
 interface MilhaAtualizaRequest{
-    milha_id: string,
-    data: string,
-    quantidade: string,
-    valorunitario: string,
-    valortotal: string,
-    observacao: string,
+    milha_id: string;
+    data: string;
+    quantidade: string;
+    valorunitario: string;
+    valortotal: string;
+    observacao: string;
     fidelidade_id: string
 }
 
