@@ -20,7 +20,7 @@ const router = Router();
 const upload = multer(uploadConfig.upload("./img"));
 
 //Usuarios
-router.post('/usuarios', new UsuarioController().handle);
+router.post('/usuario', new UsuarioController().handle);
 router.post('/session', new UsuarioAuthController().handle);
 router.get('/me', isAutenticado, new UsuarioDetalheController().handle);
 
