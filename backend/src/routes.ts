@@ -14,6 +14,7 @@ import { MilhaDeleteController } from "./controllers/milha/MilhaDeleteController
 import { MilhaAtualizaController } from "./controllers/milha/MilhaAtualizaController";
 import { MilhaDetalheController } from "./controllers/milha/MilhaDetalheController";
 import { FidelidadeAtualizaController } from "./controllers/fidelidade/FidelidadeAtualizaController";
+import { UsuarioAlteraSenhaController } from "./controllers/usuario/UsuarioAlteraSenhaController";
 
 const router = Router();
 
@@ -23,6 +24,7 @@ const upload = multer(uploadConfig.upload("./img"));
 router.post('/usuario', new UsuarioController().handle);
 router.post('/session', new UsuarioAuthController().handle);
 router.get('/me', isAutenticado, new UsuarioDetalheController().handle);
+router.post('/usuario/alterasenha', new UsuarioAlteraSenhaController().handle);
 
 //Fidelidades
 router.post('/fidelidade', isAutenticado, upload.single('file'), new FidelidadeCadastroController().handle);

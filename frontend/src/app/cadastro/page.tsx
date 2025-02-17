@@ -28,8 +28,8 @@ export default function Cadastro(){
                 status
             })
         }catch(err){
-            console.log("Erro");
             console.log(err);
+            return;
         }
 
         redirect("/");
